@@ -73,16 +73,21 @@ const SingleCountry = () => {
           <b>Currencies:</b>
           {Object.values(country.currencies)[0].name}
         </p>
-        <p>
-          <b>Bordering Countries:</b>
-          {borders.map((border, i) => (
-            <CountryCard
-              key={i}
-              flag={border.flags.png}
-              name={border.name.common}
-            />
-          ))}
-        </p>
+        {borders.length > 0 && (
+          <div>
+            <b>Bordering Countries:</b>
+            {/* added Carousel as some countries had to many border and looked messt */}
+            <Carousel>
+              {borders.map((border, i) => (
+                 <Carousel.Item>
+                <div key={i}>
+                  <CountryCard flag={border.flags.png} name={border.name.common} />
+                </div>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </div>
+        )}
       </Col>
     </Row>
   );
