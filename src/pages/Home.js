@@ -3,9 +3,13 @@ import axios from 'axios';
 import CountryCard from '../components/CountryCard';
 import {Row, Button} from 'react-bootstrap';
 
+
 const Home = () => {
+    
     const [countriesList, setCountriesList] = useState([]);
     const [term, setTerm] = useState("");
+
+    ;
 
     const handleChange = (e) => {
         setTerm(e.target.value)
@@ -61,10 +65,15 @@ const Home = () => {
 
     return (
         <>
-        <div className="search">
+        <Row>
+        <div className="search mt-2 mb-2">
         <input type="text" value={term} onChange={handleChange} onKeyUp={handleKeyUp} />
         <Button variant="primary" onClick={handleClick}>Search</Button>
-    </div>
+        </div>
+        <div>
+
+        </div>
+        </Row>
         <Row className= "g-2" md={3} xs={1} >
         {countryCards}
         </Row>
