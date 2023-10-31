@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import {useState, useEffect} from "react";
 import axios from "axios";
-import {Row,Col, Spinner, Image, Carousel} from 'react-bootstrap';
+import {Row,Col, Spinner, Image, Carousel, Container} from 'react-bootstrap';
 import CountryCard from '../components/CountryCard';
 
 const SingleCountry = () => {
@@ -44,39 +44,43 @@ const SingleCountry = () => {
   }
 
   return (
+    <Container>
     <Row className="mt-5">
       <Col>
-        <Image className="border border-black" src={country.flags.png} />
+      <h1>
+          <b>Common name: </b>
+          {country.name.common}
+        </h1>
+        <Image className="border border-black" height="500" width="750" src={country.flags.png} />
       </Col>
       <Col>
+     
         <p>
-          <b>Common name:</b>
-          {country.name.common}
-        </p>
-        <p>
-          <b>Official name:</b>
+          <b>Official name: </b>
           {country.name.official}
         </p>
         <p>
-          <b>Region:</b>
+          <b>Region: </b>
           {country.region}
         </p>
         <p>
-          <b>Sub Region:</b>
+          <b>Sub Region: </b>
           {country.subregion}
         </p>
         <p>
-          <b>Population:</b>
+          <b>Population: </b>
           {country.population}
         </p>
         <p>
-          <b>Currencies:</b>
+          <b>Currencies: </b>
           {Object.values(country.currencies)[0].name}
         </p>
+        </Col>
+        <Col>
         {borders.length > 0 && (
           <div>
-            <b>Bordering Countries:</b>
-            {/* added Carousel as some countries had to many border and looked messt */}
+            <b>Bordering Countries: </b>
+            {/* added Carousel as some countries had to many border and looked messy */}
             <Carousel>
               {borders.map((border, i) => (
                  <Carousel.Item>
@@ -88,8 +92,11 @@ const SingleCountry = () => {
             </Carousel>
           </div>
         )}
-      </Col>
+        </Col>
+    
     </Row>
+    </Container>
+    
   );
 };
 
