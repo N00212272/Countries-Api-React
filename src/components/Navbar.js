@@ -5,13 +5,20 @@ import {Link, useNavigate} from 'react-router-dom';
 
 const Navbar = (props) => {
 
-
-   
     let navigate = useNavigate();
+    const [selectedRegion, setSelectedRegion] = useState([]);
+
     const handleInputChange = (e) => {
         navigate('/');
         props.handleChange(e);
     }
+
+    const handleRegionSelect = (region) => {
+      setSelectedRegion(region);
+      props.onRegionChange(region);
+      navigate(`/regions/${region}`);
+    };
+
     return (
         <>
         <Container fluid className='bg-black' >
@@ -25,16 +32,15 @@ const Navbar = (props) => {
         <input type='text' onChange={handleInputChange} value={props.term}/>
         <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Region
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">All</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Africa</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Europe</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Asia</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+            Region: {selectedRegion}
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={() => navigate(`/`)}>All</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleRegionSelect('Africa')}>Africa</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleRegionSelect('Europe')}>Europe</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleRegionSelect('Asia')}>Asia</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
         </Nav>
            
             </Container>
