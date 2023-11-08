@@ -21,7 +21,7 @@ const WeatherCard = (props) => {
         })
       })
     return (
-        <Card>
+        <Card style={{ width: '25rem' }}>
              {weather?.current?.condition && (
                 <Card.Body>
                     <Card.Img className="border border-black" src={weather.current.condition.icon} variant="top" height="200"/>
