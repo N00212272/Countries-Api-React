@@ -9,7 +9,7 @@ import SingleCountry from "./pages/SingleCountry";
 import Region from "./pages/Region";
 
 //import components
-import Navbar from "./components/Navbar";
+import MyNavbar from "./components/MyNavbar";
 
 import {useState , useEffect} from 'react';
 
@@ -27,7 +27,7 @@ function App() {
 
   return(
     <Router>
-       <Navbar handleChange={handleChange} onRegionChange={handleRegionChange} term={term}/>
+       <MyNavbar handleChange={handleChange} onRegionChange={handleRegionChange} term={term}/>
       <Container>
         <Row>
           <Col>
