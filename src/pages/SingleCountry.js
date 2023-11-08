@@ -67,6 +67,10 @@ const SingleCountry = () => {
           {country.name.official}
         </h5>
         <h5>
+          <b>Capital: </b>
+          {country.capital}
+        </h5>
+        <h5>
           <b>Region: </b>
           {country.region}
         </h5>
@@ -79,15 +83,24 @@ const SingleCountry = () => {
           {country.population}
         </h5>
         <h5>
-          <b>Currencies: </b>
+          <b>Currency: </b>
           {Object.values(country.currencies)[0].name}
+          
+        </h5>
+        <h5>
+          <b>Languages: </b>
+          {/* some countries have more then 1 language so i created a condition checking this */}
+          {Object.values(country.languages).map((language, i) => (
+            <h5 key={i}>{language}{i < Object.values(country.languages).length -1 ? ', ' : ''}</h5>
+          ))}
         </h5>
         </Col>
-        
+        </Row>
+        <Row className="mt-5">
         <Col xs={12} lg={4} >
         {borders.length > 0 && (
           <div>
-            <h5 className="mt-5"><b>Bordering Countries: </b></h5>
+            <h5><b>Bordering Countries: </b></h5>
             
             {/* added Carousel as some countries had to many border and looked messy */}
             <Carousel>
@@ -102,14 +115,13 @@ const SingleCountry = () => {
           </div>
         )}
         {borders.length === 0 && (
-          <h3 className="mt-3">I am an island!</h3>
+          <CountryCard flag={'https://images.pexels.com/photos/1316897/pexels-photo-1316897.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'} region="I am an island" />
         )}
         </Col>
-        <Col xs={12} lg={4} className="mt-5">
+        <Col xs={12} lg={4}>
           <WeatherCard  name={name}/>
         </Col>
-
-
+        
         </Row>
         
     </Container>
