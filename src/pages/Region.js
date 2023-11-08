@@ -2,7 +2,7 @@ import {useState , useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import CountryCard from '../components/CountryCard';
-import {Row} from 'react-bootstrap';
+import {Row,Container} from 'react-bootstrap';
 
 const Region = (props) => {
     let { region } = useParams();
@@ -26,10 +26,11 @@ const Region = (props) => {
       ))
     return(
         
-    
+      <Container className='mt-3'>
     <Row className= "g-2" md={3} xs={1} >
     {countryCards}
     </Row>
+    </Container>
   );
 }
 
