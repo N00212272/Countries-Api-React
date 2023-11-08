@@ -13,7 +13,6 @@ const Region = (props) => {
         axios
           .get(`https://restcountries.com/v3.1/region/${region}`)
           .then((response) => {
-            console.log(response.data);
             setCountries(response.data);
             }) .catch(error => {
             console.error(error);
