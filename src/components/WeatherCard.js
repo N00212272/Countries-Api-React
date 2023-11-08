@@ -21,11 +21,11 @@ const WeatherCard = (props) => {
         })
       })
     return (
-        <Card style={{ width: '25rem' }}>
+        <Card className='rounded'>
              {weather?.current?.condition && (
                 <Card.Body>
                     <Card.Img className="border border-black" src={weather.current.condition.icon} variant="top" height="200"/>
-            <Card.Title>{weather.current.condition.text}</Card.Title>
+            <Card.Title><b>Current Condition</b>{weather.current.condition.text}</Card.Title>
             <p><b>Current temp: </b>{weather.current.temp_c} Celcius</p>
             <p><b>Wind Speed: </b>{weather.current.wind_kph} Kp/h</p>
             <p><b>Uv index: </b>{weather.current.uv}</p>

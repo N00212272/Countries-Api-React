@@ -60,7 +60,7 @@ const SingleCountry = () => {
         <Image className="border border-black" width="600" height="300"  src={country.flags.png} />
       </Col>
       
-      <Col xs={12} lg={6}>
+      <Col xs={12} lg={6} className="border border-black rounded ">
         <h2 className="mb-3"><b>Country Details</b></h2>
         <h5>
           <b>Official name: </b>
@@ -103,9 +103,10 @@ const SingleCountry = () => {
             <h5><b>Bordering Countries: </b></h5>
             
             {/* added Carousel as some countries had to many border and looked messy */}
-            <Carousel>
+            <Carousel data-bs-theme="dark" fade>
               {borders.map((border, i) => (
-                 <Carousel.Item>
+                // inerval to change the slide
+                 <Carousel.Item interval={2000}>
                 <div key={i}>
                   <CountryCard flag={border.flags.png} name={border.name.common} region={border.region} />
                 </div>
@@ -118,7 +119,7 @@ const SingleCountry = () => {
           <CountryCard flag={'https://images.pexels.com/photos/1316897/pexels-photo-1316897.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'} region="I am an island" />
         )}
         </Col>
-        <Col xs={12} lg={4}>
+        <Col xs={12} lg={6}>
           <WeatherCard  name={name}/>
         </Col>
         
