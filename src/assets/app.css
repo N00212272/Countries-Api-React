@@ -1,0 +1,15 @@
+.indicators{
+    text-decoration-color: black;
+}
+
+.app.light {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  .app.dark {
+    background-color: #333333;
+    color: #ffffff;
+  }
+  
+  
