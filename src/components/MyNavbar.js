@@ -1,7 +1,7 @@
 import {Nav, Container, Dropdown, Navbar } from 'react-bootstrap';
 import {useState , useEffect} from 'react';
 
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, Offcanvas} from 'react-router-dom';
 
 const MyNavbar = (props) => {
 
@@ -18,13 +18,14 @@ const MyNavbar = (props) => {
       props.onRegionChange(region);
       navigate(`/regions/${region}`);
     };
-
+    
     return (
-      <Navbar bg="dark" variant="dark" expand="md">
+      <Navbar sticky="top" bg="dark" variant="dark" >
+          
         <Container>
         
      
-
+        
         <h1><Link to='/' style={{ textDecoration: 'none', color: 'white' }}>Home</Link></h1>
         <input type='text' placeholder="Search a Country" onChange={handleInputChange} value={props.term}/>
         <Dropdown>
