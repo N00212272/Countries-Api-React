@@ -7,11 +7,12 @@ import './assets/app.css';
 import Home from "./pages/Home";
 import SingleCountry from "./pages/SingleCountry";
 import Region from "./pages/Region";
+import PageNotFound from "./pages/PageNotFound";
 
 //import components
 import MyNavbar from "./components/MyNavbar";
 
-import {useState , useEffect} from 'react';
+import {useState , useEffect, } from 'react';
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
       setSelectedRegion(region);
     };
 
+   
+
   return(
     <Router>
        <MyNavbar handleChange={handleChange} onRegionChange={handleRegionChange} term={term}/>
@@ -35,6 +38,7 @@ function App() {
             <Route path='/' element={<Home term={term}/>} />
             <Route path='/country/:name' element={<SingleCountry/>} />
             <Route path="/regions/:region" element={<Region selectedRegion={selectedRegion} />} />
+            <Route path='*' element={<PageNotFound />} />
             </Routes>
           </Col>
         </Row>
