@@ -2,8 +2,10 @@ import { useParams } from "react-router-dom";
 import {useState, useEffect} from "react";
 import axios from "axios";
 import {Row,Col, Spinner, Image, Carousel, Container} from 'react-bootstrap';
-import CountryCard from '../components/CountryCard';
+//Components
 import WeatherCard from "../components/WeatherCard";
+import BorderCard from "../components/BorderCard";
+import NoBorderCard from "../components/NoBorderCard";
 
 
 const SingleCountry = () => {
@@ -51,25 +53,31 @@ const SingleCountry = () => {
 
   return (
     <Container>
-    <Row className="mt-5">
-      <Col xs={12} lg={6} pt={5}>
-      <h2>
-          <b>Common name: </b>
-          {country.name.common}
-        </h2>
-        <Image className="border border-black" width="600" height="300"  src={country.flags.png} />
-      </Col>
+    <Row className="mt-5 ">
+      <h1 className="text-center mb-4">
+        <b>{country.name.common}</b>
+        
+      </h1>
       
-      <Col xs={12} lg={6} className="border border-black rounded ">
-        <h2 className="mb-3"><b>Country Details</b></h2>
+        <Col xs={12} lg={6} pt={5}>
+          <Image className="border border-black border-3 w-100 " height="450"  src={country.flags.png} />
+        </Col>
+      
+      <Col xs={12} lg={6} className="border border-success rounded text-white text-center bg-black ">
+      <br/>
+        <h2 className="mb-3"><b>Country Details:</b></h2>
+        
         <h5>
+           <br/>
           <b>Official name: </b>
           {country.name.official}
         </h5>
+       
         <h5>
           <b>Capital: </b>
           {country.capital}
         </h5>
+        <br/>
         <h5>
           <b>Region: </b>
           {country.region}
@@ -78,6 +86,7 @@ const SingleCountry = () => {
           <b>Sub Region: </b>
           {country.subregion}
         </h5>
+        <br/>
         <h5>
           <b>Population: </b>
           {country.population}
@@ -97,10 +106,15 @@ const SingleCountry = () => {
         </Col>
         </Row>
         <Row className="mt-5">
-        <Col xs={12} lg={4} >
+        <Col xs={12} lg={6}>
+          <h4><b>Weather Information:</b></h4>
+          <WeatherCard name={name} />
+        </Col>
+        <Col xs={12} lg={6} >
+         
         {borders.length > 0 && (
           <div>
-            <h5><b>Bordering Countries: </b></h5>
+            <h4><b>Bordering Countries: </b></h4>
             
             {/* added Carousel as some countries had to many border and looked messy */}
             <Carousel data-bs-theme="dark" fade>
@@ -108,21 +122,24 @@ const SingleCountry = () => {
                 // inerval to change the slide
                  <Carousel.Item interval={2000}>
                 <div key={i}>
-                  <CountryCard flag={border.flags.png} name={border.name.common} region={border.region} />
+                  <BorderCard flag={border.flags.png} name={border.name.common} />
                 </div>
                 </Carousel.Item>
+                
+                
               ))}
             </Carousel>
           </div>
         )}
+        
         {borders.length === 0 && (
-          <CountryCard flag={'https://images.pexels.com/photos/1316897/pexels-photo-1316897.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'} region="I am an island" />
+          <>
+          <h4><b>No Bordering Countries </b></h4>
+          <NoBorderCard />
+          </>
         )}
         </Col>
-        <Col xs={12} lg={6}>
-          <WeatherCard  name={name}/>
-        </Col>
-        
+       
         </Row>
         
     </Container>
