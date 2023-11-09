@@ -46,7 +46,7 @@ const Home = (props) => {
 
     return (
         <Container className='mt-3'>
-        <Row className= "g-2" md={3} xs={1} >
+        <Row md={4} xs={1} >
         {countryCards}
         </Row>
         </Container>
