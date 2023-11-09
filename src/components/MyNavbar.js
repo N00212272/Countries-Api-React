@@ -20,14 +20,14 @@ const MyNavbar = (props) => {
     };
     
     return (
-      <Navbar sticky="top" bg="dark" variant="dark" >
+      <Navbar sticky="top" bg="dark" variant="dark" > 
           
         <Container>
         
      
         
-        <h1><Link to='/' style={{ textDecoration: 'none', color: 'white' }}>Home</Link></h1>
-        <input type='text' placeholder="Search a Country" onChange={handleInputChange} value={props.term}/>
+        <h1><Link to='/' style={{ textDecoration: 'none', color: 'green' }}>Home</Link></h1>
+        <input type='text' placeholder="Search a Country...." onChange={handleInputChange} value={props.term}/>
         <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
             Region: {selectedRegion}
@@ -40,6 +40,10 @@ const MyNavbar = (props) => {
             <Dropdown.Item onClick={() => handleRegionSelect('Europe')}>Europe
             </Dropdown.Item>
             <Dropdown.Item onClick={() => handleRegionSelect('Asia')}>Asia
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleRegionSelect('Americas')}>Americas
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleRegionSelect('Oceania')}>Oceania
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
