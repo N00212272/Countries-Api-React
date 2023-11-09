@@ -11,6 +11,7 @@ import PageNotFound from "./pages/PageNotFound";
 
 //import components
 import MyNavbar from "./components/MyNavbar";
+import MyFooter from "./components/MyFooter";
 
 import {useState , useEffect, } from 'react';
 
@@ -43,6 +44,7 @@ function App() {
           </Col>
         </Row>
       </Container>
+      <MyFooter/>
     </Router>
   );
 }
